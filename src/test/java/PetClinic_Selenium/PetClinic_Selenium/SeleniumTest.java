@@ -62,13 +62,13 @@ public class SeleniumTest extends TestCase
         // Wait for the page to load, timeout after 10 seconds
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("PetClinic");
+                return d.getTitle().toLowerCase().startsWith("petclinic");
             }
         });
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
-        Assert.assertTrue(driver.getTitle().toLowerCase().startsWith("PetClinic"));
+        Assert.assertTrue(driver.getTitle().toLowerCase().startsWith("petclinic"));
         //Close the browser
         driver.close();
     }
