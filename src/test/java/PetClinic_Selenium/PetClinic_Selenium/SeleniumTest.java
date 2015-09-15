@@ -47,7 +47,7 @@ public class SeleniumTest extends TestCase
         // driver.navigate().to("http://www.google.com");
 
         // Find the text input element by its name
-        WebElement element = driver.findElement(By.name("q"));
+        //WebElement element = driver.findElement(By.name("q"));
 
         // Enter something to search for
         //element.sendKeys("Wine!");
