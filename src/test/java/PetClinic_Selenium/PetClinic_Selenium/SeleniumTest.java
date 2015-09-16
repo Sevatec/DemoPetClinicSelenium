@@ -1,5 +1,7 @@
 package PetClinic_Selenium.PetClinic_Selenium;
 
+import java.util.List;
+
 import junit.framework.Assert;
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -12,8 +14,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.thoughtworks.selenium.DefaultSelenium;
+
+
 public class SeleniumTest extends TestCase
 {
+	public static String ipAddress = "54.172.164.220";
+	public static String address = "http://"+ipAddress+":8080/petclinic";
     /**
      * Create the test case
      *
@@ -35,14 +42,16 @@ public class SeleniumTest extends TestCase
     /**
      * Rigourous Test :-)
      */    
-    public void testGoogle(){
+    public void testTitle(){
     	// Create a new instance of the Firefox driver
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
+    	System.out.println(address);
         WebDriver driver = new FirefoxDriver();
 
         // And now use this to visit webpage
-        driver.get("http://54.172.164.220:8080/petclinic");
+        //driver.get(address);
+        ClinicNavigation.goToMainPage(driver);
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
@@ -60,16 +69,75 @@ public class SeleniumTest extends TestCase
         
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
+        /*(new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getTitle().toLowerCase().startsWith("petclinic");
             }
-        });
+        });*/
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
         Assert.assertTrue(driver.getTitle().toLowerCase().startsWith("petclinic"));
         //Close the browser
         driver.close();
+    }
+    
+    public void testWelcomeHeader(){
+    	WebDriver driver = new FirefoxDriver();
+    	ClinicNavigation.goToMainPage(driver);
+    	//String header = driver.findElement(By.tagName("css=h2")).getText();
+    	String header = driver.findElement(By.cssSelector("h2")).getText();
+    	
+    	Assert.assertTrue(header.toLowerCase().startsWith("welcome"));
+    	
+    	driver.close();
+    }
+    
+    public void testMenuHome(){
+    	WebDriver driver = new FirefoxDriver();
+    	ClinicNavigation.goToMainPage(driver);
+    	
+    	
+    	WebElement homeItem = driver.findElement(By.linkText("Home"));
+    	String url = homeItem.getAttribute("href");
+    	System.out.println("Home URL: "+url);
+    	Assert.assertTrue(url.startsWith(address+"/"));
+    	driver.close();
+    }
+    
+    public void testMenuFind(){
+    	WebDriver driver = new FirefoxDriver();
+    	ClinicNavigation.goToMainPage(driver);
+    	
+    	
+    	WebElement homeItem = driver.findElement(By.linkText("Find owners"));
+    	String url = homeItem.getAttribute("href");
+    	System.out.println("Home URL: "+url);
+    	Assert.assertTrue(url.startsWith(address+"/owners/find.html"));
+    	driver.close();
+    }
+    
+    public void testMenuVets(){
+    	WebDriver driver = new FirefoxDriver();
+    	ClinicNavigation.goToMainPage(driver);
+    	
+    	
+    	WebElement homeItem = driver.findElement(By.linkText("Veterinarians"));
+    	String url = homeItem.getAttribute("href");
+    	System.out.println("Home URL: "+url);
+    	Assert.assertTrue(url.startsWith(address+"/vets.html"));
+    	driver.close();
+    }
+    
+    public void testMenuError(){
+    	WebDriver driver = new FirefoxDriver();
+    	ClinicNavigation.goToMainPage(driver);
+    	
+    	
+    	WebElement homeItem = driver.findElement(By.linkText("Error"));
+    	String url = homeItem.getAttribute("href");
+    	System.out.println("Home URL: "+url);
+    	Assert.assertTrue(url.startsWith(address+"/oups.html"));
+    	driver.close();
     }
 }
