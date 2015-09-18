@@ -1,5 +1,7 @@
 package PetClinic_Selenium.PetClinic_Selenium;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -11,6 +13,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -47,8 +51,17 @@ public class SeleniumTest extends TestCase
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
     	System.out.println(address);
-        WebDriver driver = new FirefoxDriver();
+        //WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
 
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         // And now use this to visit webpage
         //driver.get(address);
         ClinicNavigation.goToMainPage(driver);
@@ -83,7 +96,17 @@ public class SeleniumTest extends TestCase
     }
     
     public void testWelcomeHeader(){
-    	WebDriver driver = new FirefoxDriver();
+    	//WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
+
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	ClinicNavigation.goToMainPage(driver);
     	//String header = driver.findElement(By.tagName("css=h2")).getText();
     	String header = driver.findElement(By.cssSelector("h2")).getText();
@@ -94,7 +117,17 @@ public class SeleniumTest extends TestCase
     }
     
     public void testMenuHome(){
-    	WebDriver driver = new FirefoxDriver();
+    	//WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
+
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	ClinicNavigation.goToMainPage(driver);
     	
     	
@@ -106,7 +139,17 @@ public class SeleniumTest extends TestCase
     }
     
     public void testMenuFind(){
-    	WebDriver driver = new FirefoxDriver();
+    	//WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
+
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	ClinicNavigation.goToMainPage(driver);
     	
     	
@@ -118,7 +161,17 @@ public class SeleniumTest extends TestCase
     }
     
     public void testMenuVets(){
-    	WebDriver driver = new FirefoxDriver();
+    	//WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
+
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	ClinicNavigation.goToMainPage(driver);
     	
     	
@@ -130,7 +183,17 @@ public class SeleniumTest extends TestCase
     }
     
     public void testMenuError(){
-    	WebDriver driver = new FirefoxDriver();
+    	//WebDriver driver = new FirefoxDriver();
+    	DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	capability.setCapability("jenkins.label", "windows && firefox");
+
+    	WebDriver driver = null;
+		try {
+			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	ClinicNavigation.goToMainPage(driver);
     	
     	
