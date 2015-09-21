@@ -2,6 +2,8 @@ package PetClinic_Selenium.PetClinic_Selenium;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import junit.framework.Assert;
@@ -200,7 +202,10 @@ public class SeleniumTest extends TestCase
     	WebElement homeItem = driver.findElement(By.linkText("Error"));
     	String url = homeItem.getAttribute("href");
     	System.out.println("Home URL: "+url);
-    	Assert.assertTrue(url.startsWith(address+"/oups.html"));
+    	//Assert.assertTrue(url.startsWith(address+"/oups.html"));
+    	List<String> urlSplit = Arrays.asList(url.split(":"));
+    	System.out.println("Split URL: " + urlSplit.get(2));
+    	Assert.assertTrue(urlSplit.get(2).startsWith("8080/oups.html"));
     	driver.close();
     }
 }
