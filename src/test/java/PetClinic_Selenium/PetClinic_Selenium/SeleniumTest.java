@@ -205,7 +205,7 @@ public class SeleniumTest extends TestCase
     	//Assert.assertTrue(url.startsWith(address+"/oups.html"));
     	List<String> urlSplit = Arrays.asList(url.split(":"));
     	System.out.println("Split URL: " + urlSplit.get(2));
-    	Assert.assertTrue(urlSplit.get(2).startsWith("8080/oups.html"));
+    	Assert.assertTrue(urlSplit.get(2).toLowerCase().startsWith("8080/petclinic/oups.html"));
     	driver.close();
     }
 }
