@@ -136,7 +136,10 @@ public class SeleniumTest extends TestCase
     	WebElement homeItem = driver.findElement(By.linkText("Home"));
     	String url = homeItem.getAttribute("href");
     	System.out.println("Home URL: "+url);
-    	Assert.assertTrue(url.startsWith(address+"/"));
+    	//Assert.assertTrue(url.startsWith(address+"/"));
+    	List<String> urlSplit = Arrays.asList(url.split(":"));
+    	System.out.println("Split URL: " + urlSplit.get(2));
+    	Assert.assertTrue(urlSplit.get(2).toLowerCase().startsWith("8080/petclinic/"));
     	driver.close();
     }
     
@@ -158,7 +161,10 @@ public class SeleniumTest extends TestCase
     	WebElement homeItem = driver.findElement(By.linkText("Find owners"));
     	String url = homeItem.getAttribute("href");
     	System.out.println("Home URL: "+url);
-    	Assert.assertTrue(url.startsWith(address+"/owners/find.html"));
+    	//Assert.assertTrue(url.startsWith(address+"/owners/find.html"));
+    	List<String> urlSplit = Arrays.asList(url.split(":"));
+    	System.out.println("Split URL: " + urlSplit.get(2));
+    	Assert.assertTrue(urlSplit.get(2).toLowerCase().startsWith("8080/petclinic/owners/find.html"));
     	driver.close();
     }
     
@@ -180,7 +186,10 @@ public class SeleniumTest extends TestCase
     	WebElement homeItem = driver.findElement(By.linkText("Veterinarians"));
     	String url = homeItem.getAttribute("href");
     	System.out.println("Home URL: "+url);
-    	Assert.assertTrue(url.startsWith(address+"/vets.html"));
+    	//Assert.assertTrue(url.startsWith(address+"/vets.html"));
+    	List<String> urlSplit = Arrays.asList(url.split(":"));
+    	System.out.println("Split URL: " + urlSplit.get(2));
+    	Assert.assertTrue(urlSplit.get(2).toLowerCase().startsWith("8080/petclinic/vets.html"));
     	driver.close();
     }
     
