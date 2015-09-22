@@ -21,16 +21,16 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class FirefoxTest extends TestCase
+public class InternetExplorerTest extends TestCase
 {
-	public static String browser = "firefox";
+	public static String browser = "ie";
 	
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public FirefoxTest( String testName )
+    public InternetExplorerTest( String testName )
     {
         super( testName );
     }
