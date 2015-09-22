@@ -25,7 +25,7 @@ import com.thoughtworks.selenium.DefaultSelenium;
 
 public class SeleniumTest extends TestCase
 {
-	public static String ipAddress = "54.88.53.83";
+	public static String ipAddress = "52.21.11.227";
 	public static String address = "http://"+ipAddress+":8080/petclinic";
     /**
      * Create the test case
