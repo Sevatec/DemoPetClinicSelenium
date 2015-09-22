@@ -2,7 +2,6 @@ package PetClinic_Selenium.PetClinic_Selenium;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,49 +13,45 @@ import junit.framework.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.thoughtworks.selenium.DefaultSelenium;
-
-
-public class SeleniumTest extends TestCase
-{
-	public static String ipAddress = "52.21.11.227";
+public class SeleniumTestMethods extends TestCase{
+	public static String ipAddress = "54.88.53.83";
 	public static String address = "http://"+ipAddress+":8080/petclinic";
+	
+	
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public SeleniumTest( String testName )
+    /*public FirefoxTest( String testName )
     {
         super( testName );
-    }
+    }*/
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
+    /*public static Test suite()
     {
-        return new TestSuite( SeleniumTest.class );
-    }
+        return new TestSuite( FirefoxTest.class );
+    }*/
 
     /**
      * Rigourous Test :-)
      */    
-    public void testTitle(){
-    	// Create a new instance of the Firefox driver
+    public static void testTitle(String browser){
+    	// Create a new instance of the browser driver
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
-    	System.out.println(address);
+    	//System.out.println(address);
         //WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -97,11 +92,12 @@ public class SeleniumTest extends TestCase
         driver.close();
     }
     
-    public void testWelcomeHeader(){
+    public static void testWelcomeHeader(String browser){
     	//WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -118,11 +114,12 @@ public class SeleniumTest extends TestCase
     	driver.close();
     }
     
-    public void testMenuHome(){
+    public static void testMenuHome(String browser){
     	//WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -143,11 +140,12 @@ public class SeleniumTest extends TestCase
     	driver.close();
     }
     
-    public void testMenuFind(){
+    public static void testMenuFind(String browser){
     	//WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -168,11 +166,12 @@ public class SeleniumTest extends TestCase
     	driver.close();
     }
     
-    public void testMenuVets(){
+    public static void testMenuVets(String browser){
     	//WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -193,11 +192,12 @@ public class SeleniumTest extends TestCase
     	driver.close();
     }
     
-    public void testMenuError(){
+    public static void testMenuError(String browser){
     	//WebDriver driver = new FirefoxDriver();
-    	DesiredCapabilities capability = DesiredCapabilities.firefox();
-    	capability.setCapability("jenkins.label", "windows && firefox");
-
+    	//DesiredCapabilities capability = DesiredCapabilities.firefox();
+    	//capability.setCapability("jenkins.label", "windows && firefox");
+    	DesiredCapabilities capability = setupCapability(browser);
+    	
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
@@ -216,5 +216,18 @@ public class SeleniumTest extends TestCase
     	System.out.println("Split URL: " + urlSplit.get(2));
     	Assert.assertTrue(urlSplit.get(2).toLowerCase().startsWith("8080/petclinic/oups.html"));
     	driver.close();
+    }
+    
+    private static DesiredCapabilities setupCapability(String browser){
+    	DesiredCapabilities capability = null;
+    	if(browser.equals("firefox")){
+    		capability = DesiredCapabilities.firefox();
+    		capability.setCapability("jenkins.label", "windows && firefox");
+    	}
+    	else if(browser.equals("ie")){
+    		capability = DesiredCapabilities.internetExplorer();
+    		capability.setCapability("jenkins.label", "windows && internet explorer");
+    	}
+    	return capability;
     }
 }
