@@ -40,7 +40,7 @@ public class InternetExplorerTest extends TestCase
      */
     public static Test suite()
     {
-        return new TestSuite( FirefoxTest.class );
+        return new TestSuite( InternetExplorerTest.class );
     }
 
     /**
