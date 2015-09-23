@@ -17,7 +17,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SeleniumTestMethods extends TestCase{
-	public static String ipAddress = "54.88.27.130";
+	public static String ipAddress = "52.2.229.225";
 	public static String address = "http://"+ipAddress+":8080/petclinic";
 	
 	
