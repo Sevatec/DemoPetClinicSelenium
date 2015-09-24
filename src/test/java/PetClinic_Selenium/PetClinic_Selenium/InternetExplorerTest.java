@@ -23,17 +23,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class InternetExplorerTest extends TestCase
 {
-	public static String browser = "ie";
-	
-    public InternetExplorerTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+    /*
+	public static Test suite()
     {
         return new TestSuite( InternetExplorerTest.class );
     }
@@ -61,4 +52,5 @@ public class InternetExplorerTest extends TestCase
     public void testMenuError(){
     	SeleniumTestMethods.testMenuError(browser);
     }
+    */
 }
