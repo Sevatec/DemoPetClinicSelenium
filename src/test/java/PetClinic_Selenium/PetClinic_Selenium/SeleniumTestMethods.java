@@ -17,8 +17,9 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SeleniumTestMethods extends TestCase{
-	public static String ipAddress = "52.2.229.225";
-	public static String address = "http://"+ipAddress+":8080/petclinic";
+	public static String seleniumHubAddress = "52.2.229.225";
+	public static String testSiteAddress = "54.172.164.220";
+	public static String address = "http://"+testSiteAddress+":8080/petclinic";
 	
 	
     /**
@@ -54,14 +55,14 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         // And now use this to visit webpage
         //driver.get(address);
-        ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
@@ -100,12 +101,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
     	//String header = driver.findElement(By.tagName("css=h2")).getText();
     	String header = driver.findElement(By.cssSelector("h2")).getText();
     	
@@ -122,12 +123,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
     	
     	
     	WebElement homeItem = driver.findElement(By.linkText("Home"));
@@ -148,12 +149,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
     	
     	
     	WebElement homeItem = driver.findElement(By.linkText("Find owners"));
@@ -174,12 +175,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
     	
     	
     	WebElement homeItem = driver.findElement(By.linkText("Veterinarians"));
@@ -200,12 +201,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+ipAddress+":4444/wd/hub"), capability);
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	ClinicNavigation.goToMainPage(driver);
+		driver.get(address);
     	
     	
     	WebElement homeItem = driver.findElement(By.linkText("Error"));

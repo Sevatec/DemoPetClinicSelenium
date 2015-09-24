@@ -25,11 +25,6 @@ public class InternetExplorerTest extends TestCase
 {
 	public static String browser = "ie";
 	
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
     public InternetExplorerTest( String testName )
     {
         super( testName );
@@ -43,9 +38,6 @@ public class InternetExplorerTest extends TestCase
         return new TestSuite( InternetExplorerTest.class );
     }
 
-    /**
-     * Rigourous Test :-)
-     */    
     public void testTitle(){
     	SeleniumTestMethods.testTitle(browser);
     }
