@@ -65,8 +65,8 @@ public class FirefoxTest extends TestCase
     public void testMenuVets(){
     	SeleniumTestMethods.testMenuVets(browser);
     }
-    
+    /*
     public void testMenuError(){
     	SeleniumTestMethods.testMenuError(browser);
-    }
+    }*/
 }
