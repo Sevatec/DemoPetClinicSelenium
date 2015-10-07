@@ -31,7 +31,7 @@ public static String browser = "ie";
     public void testTitle(){
     	SeleniumTestMethods.testTitle(browser);
     }
-    
+    /*
     public void testWelcomeHeader(){
     	SeleniumTestMethods.testWelcomeHeader(browser);
     }
@@ -46,7 +46,7 @@ public static String browser = "ie";
     
     public void testMenuVets(){
     	SeleniumTestMethods.testMenuVets(browser);
-    }
+    }*/
     /*
     public void testMenuError(){
     	SeleniumTestMethods.testMenuError(browser);
