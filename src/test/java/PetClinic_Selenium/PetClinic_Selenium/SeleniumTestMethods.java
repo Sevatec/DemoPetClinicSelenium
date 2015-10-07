@@ -18,8 +18,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SeleniumTestMethods extends TestCase{
 	public static String seleniumHubAddress = "52.2.229.225";
-	//public static String testSiteAddress = "54.172.164.220";
-	public static String testSiteAddress = "localhost";
+	public static String testSiteAddress = "54.210.149.158";
+	//public static String testSiteAddress = "localhost";
 	public static String address = "http://"+testSiteAddress+":8080/petclinic";
 	
 	
