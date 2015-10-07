@@ -14,6 +14,7 @@ import junit.framework.TestSuite;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -59,7 +60,12 @@ public class SeleniumTestMethods extends TestCase{
     	
     	WebDriver driver = null;
 		try {
-			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
+			if(browser.equals("firefox")){
+				driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
+			}
+			else if(browser.equals("ie")){
+				driver = new InternetExplorerDriver(capability);
+			}
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -128,6 +134,7 @@ public class SeleniumTestMethods extends TestCase{
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
+			driver = new InternetExplorerDriver();
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -231,13 +238,14 @@ public class SeleniumTestMethods extends TestCase{
     	}
     	else if(browser.equals("ie")){
     		capability = DesiredCapabilities.internetExplorer();
+    		capability.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
     		capability.setCapability("jenkins.label", "windows && internet explorer");
     	}
     	return capability;
     }
     
     private static void setSystemProperties(String browser){
-    	File file = new File("C:/IEWebdriver/IEDriverServer.exe");
+    	File file = new File("C:\\IEWebdriver\\IEDriverServer.exe");
     	System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
     }
 }
