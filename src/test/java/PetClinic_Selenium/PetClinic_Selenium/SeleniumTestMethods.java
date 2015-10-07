@@ -245,7 +245,7 @@ public class SeleniumTestMethods extends TestCase{
     }
     
     private static void setSystemProperties(String browser){
-    	File file = new File("C:\\IEWebdriver\\IEDriverServer.exe");
+    	File file = new File("IEDriverServer.exe");
     	System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
     }
 }
