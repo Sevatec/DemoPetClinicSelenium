@@ -1,5 +1,6 @@
 package PetClinic_Selenium.PetClinic_Selenium;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -53,6 +54,8 @@ public class SeleniumTestMethods extends TestCase{
     	//DesiredCapabilities capability = DesiredCapabilities.firefox();
     	//capability.setCapability("jenkins.label", "windows && firefox");
     	DesiredCapabilities capability = setupCapability(browser);
+    	
+    	setSystemProperties(browser);
     	
     	WebDriver driver = null;
 		try {
@@ -231,5 +234,10 @@ public class SeleniumTestMethods extends TestCase{
     		capability.setCapability("jenkins.label", "windows && internet explorer");
     	}
     	return capability;
+    }
+    
+    private static void setSystemProperties(String browser){
+    	File file = new File("C:/IEWebdriver/IEDriverServer.exe");
+    	System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
     }
 }
