@@ -46,7 +46,7 @@ public class SeleniumTestMethods extends TestCase{
     /**
      * Rigourous Test :-)
      */    
-    public static void testTitle(String browser) throws MalformedURLException{
+    public static void testTitle(String browser){
     	// Create a new instance of the browser driver
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
@@ -65,7 +65,12 @@ public class SeleniumTestMethods extends TestCase{
 			driver = new InternetExplorerDriver(capability);
 		}
 		*/
-		driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
+    	try {
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+    	
         // And now use this to visit webpage
         //driver.get(address);
 		driver.get(address);
