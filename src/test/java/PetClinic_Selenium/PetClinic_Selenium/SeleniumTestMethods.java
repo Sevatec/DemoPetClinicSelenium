@@ -20,8 +20,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class SeleniumTestMethods extends TestCase{
 	public static String seleniumHubAddress = "52.2.229.225";
-	public static String testSiteAddress = "54.172.164.220";
-	//public static String testSiteAddress = "localhost";
+	//public static String testSiteAddress = "54.172.164.220";
+	public static String testSiteAddress = "localhost";
 	public static String address = "http://"+testSiteAddress+":8080/petclinic";
 	
 	
@@ -46,7 +46,7 @@ public class SeleniumTestMethods extends TestCase{
     /**
      * Rigourous Test :-)
      */    
-    public static void testTitle(String browser){
+    public static void testTitle(String browser) throws MalformedURLException{
     	// Create a new instance of the browser driver
         // Notice that the remainder of the code relies on the interface, 
         // not the implementation.
@@ -56,20 +56,16 @@ public class SeleniumTestMethods extends TestCase{
     	//capability.setCapability("jenkins.label", "windows && firefox");
     	DesiredCapabilities capability = setupCapability(browser);
     	
-    	setSystemProperties(browser);
-    	
     	WebDriver driver = null;
-		try {
-			if(browser.equals("firefox")){
-				driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
-			}
-			else if(browser.equals("ie")){
-				driver = new InternetExplorerDriver(capability);
-			}
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		/*
+		if(browser.equals("firefox")){
+			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
 		}
+		else if(browser.equals("ie")){
+			driver = new InternetExplorerDriver(capability);
+		}
+		*/
+		driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
         // And now use this to visit webpage
         //driver.get(address);
 		driver.get(address);
@@ -134,9 +130,7 @@ public class SeleniumTestMethods extends TestCase{
     	WebDriver driver = null;
 		try {
 			driver = new RemoteWebDriver(new URL("http://"+seleniumHubAddress+":4444/wd/hub"), capability);
-			driver = new InternetExplorerDriver();
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		driver.get(address);
@@ -242,10 +236,5 @@ public class SeleniumTestMethods extends TestCase{
     		capability.setCapability("jenkins.label", "windows && internet explorer");
     	}
     	return capability;
-    }
-    
-    private static void setSystemProperties(String browser){
-    	File file = new File("IEDriverServer.exe");
-    	System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
     }
 }
